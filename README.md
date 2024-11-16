@@ -2,13 +2,6 @@
 
 This project generates synthetic data for use in various applications, such as testing, analysis, or prototyping. The data is exported as both an Excel file (`synthetic_data.xlsx`) and a CSV file (`synthetic_data.csv`).
 
-## Prerequisites
-
-Before running the script, ensure you have the following installed:
-
-- [Node.js](https://nodejs.org/) (version 14 or later)
-- npm (comes with Node.js)
-
 ## Setup Instructions
 
 Follow these steps to set up and run the project:
