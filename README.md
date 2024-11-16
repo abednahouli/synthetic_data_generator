@@ -1,5 +1,3 @@
-Here’s the complete **README.md** file with all sections formatted properly in a single code block:
-
 # Synthetic Data Generator
 
 This project generates synthetic data for use in various applications, such as testing, analysis, or prototyping. The data is exported as both an Excel file (`synthetic_data.xlsx`) and a CSV file (`synthetic_data.csv`).
