@@ -1,6 +1,10 @@
 const { faker } = require('@faker-js/faker');
+const xlsx = require('xlsx');
+const fs = require('fs');
 
-const generateData = (records = 3000) => {
+number_of_records = 3000;
+
+const generateData = (records) => {
     const data = [];
     for (let i = 0; i < records; i++) {
         data.push({
@@ -20,18 +24,16 @@ const generateData = (records = 3000) => {
     return data;
 };
 
-const xlsx = require('xlsx');
-const data = generateData(3000);
+const data = generateData(number_of_records);
 
+// To generate XLSX file:
 const worksheet = xlsx.utils.json_to_sheet(data);
 const workbook = xlsx.utils.book_new();
 xlsx.utils.book_append_sheet(workbook, worksheet, "SyntheticData");
 
 xlsx.writeFile(workbook, "synthetic_data.xlsx");
 
-const fs = require('fs');
-
-// Function to convert JSON array to CSV format
+// To generate CSV file:
 const jsonToCsv = (data) => {
     const headers = Object.keys(data[0]).join(','); // Get headers from keys of the first object
     const rows = data.map(row => Object.values(row).join(',')); // Map each object to a CSV row
