@@ -2,23 +2,45 @@ const { faker } = require('@faker-js/faker');
 const xlsx = require('xlsx');
 const fs = require('fs');
 
-number_of_records = 3000;
+number_of_records = 10000;
 
+/**
+ * Function to generate synthetic e-commerce transaction data for marketing analysis
+ * @param {number} records - Number of records to generate
+ * @returns {Array} - Array of synthetic data objects
+ */
 const generateData = (records) => {
     const data = [];
     for (let i = 0; i < records; i++) {
         data.push({
-            id: faker.string.uuid(),
-            name: faker.person.fullName(),
-            email: faker.internet.email(),
-            purchaseDate: faker.date.recent(),
-            productName: faker.commerce.productName(),
-            quantity: faker.number.int({ min: 1, max: 10 }),
-            price: faker.commerce.price(),
-            totalValue: faker.commerce.price(),
-            location: faker.location.city(),
-            paymentMethod: faker.finance.transactionType(),
-            satisfactionRating: faker.number.int({ min: 1, max: 5 }),
+            id: faker.string.uuid(), // Unique transaction ID
+            customerName: faker.person.fullName(), // Full name of the customer
+            email: faker.internet.email(), // Customer's email address
+            purchaseDate: faker.date.past(), // Date of the purchase
+            productCategory: faker.commerce.department(), // Product category
+            productName: faker.commerce.productName(), // Product name
+            quantity: faker.number.int({ min: 1, max: 10 }), // Quantity purchased
+            unitPrice: faker.commerce.price(10, 500, 2), // Price per unit
+            totalValue: faker.commerce.price(20, 5000, 2), // Total transaction value
+            location: faker.location.city(), // Customer's city
+            country: faker.location.country(), // Region/State
+            paymentMethod: faker.finance.transactionType(), // Payment method
+            satisfactionRating: faker.number.int({ min: 1, max: 5 }), // Satisfaction rating (1–5)
+            deviceType: faker.helpers.arrayElement([
+                "Samsung",
+                "Apple",
+                "Huawei",
+                "Xiaomi",
+                "Oppo",
+                "Redmi",
+            ]), // Device used for purchase
+            marketingChannel: faker.helpers.arrayElement([
+                "Email",
+                "Social Media",
+                "Search Engine",
+                "Referral",
+                "Direct Traffic",
+            ]), // Source of acquisition
         });
     }
     return data;
